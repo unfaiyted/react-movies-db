@@ -3,7 +3,6 @@ import KEY from './keys';
 
 const key = KEY.key;
 export default () => {
-  console.log(key.v4)
   return {
     'Content-Type': ' application/json;charset=utf-8',
     'Authorization': `Bearer ${key.v4}`

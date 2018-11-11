@@ -33,15 +33,15 @@ async function getMisc(type = 'LatestMovies') {
 
 export async function getInitialData() {
   return await Promise.all([
-    getMisc('LatestMovies'),
+    getMisc('TopRatedMovies'),
     getMisc('UpcomingMovies'),
     getMisc('PopularMovies'),
   ]).then(([
-      latestMovies,
+      topRatedMovies,
       upcomingMovies,
       popularMovies
      ]) => ({
-      latestMovies,
+      topRatedMovies,
       upcomingMovies,
       popularMovies
   }));
@@ -57,7 +57,6 @@ async function fetchData(method, type = null, id = null) {
       replaceID(methods[method].resource, id) :
       replaceID(methods[method][type].resource, id);
 
-    console.log(method, type, id, endpoint);
 
   const PARAMS = {
       method: 'GET',
@@ -71,9 +70,6 @@ async function fetchData(method, type = null, id = null) {
 
 // Replace ID with variable
 function replaceID(string, value, replace = ':id') {
-
-  console.log(string, value, replace);
-
   if(value !== null)
     return string.replace(":id",value);
   return string;
