@@ -1,49 +1,80 @@
 //https://www.themoviedb.org/documentation/api
-import  mdb, { methods } from 'endpoints';
+import  mdb, { methods } from './endpoints';
+import {key} from './security/keys';
+import headers from './security/headers';
 
-async function search (type = "Movie") {
-  return await getData('search',type)
+async function search(type = "Movie") {
+  return await fetchData('search',type)
 }
 
-async function discover (type = "Movie") {
-  return await getData('discover',type)
+async function discover(type = "Movie") {
+  return await fetchData('discover',type)
 }
 
-async function find (id) {
-  return await getData('find', id)
+async function find(id) {
+  return await fetchData('find', id)
 }
 
-async function movie(id, type = 'Info') {
-  return await getData('movie',type, id)
+// Singular Movie and TV
+async function getMovie(id, type = 'Info') {
+  return await fetchData('movie',type, id)
 }
 
-async function tv(id, type = 'Info') {
-  return await getData('tv',type, id)
+async function getTvShow(id, type = 'Info') {
+  return await fetchData('tv',type, id)
 }
+
 
 // Pulls a List by a specific type
-async function misc(type = 'LatestMovies') {
-  return await getData('misc',type)
+async function getMisc(type = 'LatestMovies') {
+  return await fetchData('misc',type)
 }
+
 
 export async function getInitialData() {
   return await Promise.all([
-  ]).then()
+    getMisc('LatestMovies'),
+    getMisc('UpcomingMovies'),
+    getMisc('PopularMovies'),
+  ]).then(([
+      latestMovies,
+      upcomingMovies,
+      popularMovies
+     ]) => ({
+      latestMovies,
+      upcomingMovies,
+      popularMovies
+  }));
 }
 
-async function getData(method, type = null, id = null) {
+
+
+// Primary function used to fetch all data
+async function fetchData(method, type = null, id = null) {
+  const apiKey = '?api_key='+ key.v3;
   const endpoint =
     (type === null) ?
       replaceID(methods[method].resource, id) :
       replaceID(methods[method][type].resource, id);
 
-  const response = await fetch(mdb.base_url + endpoint);
+    console.log(method, type, id, endpoint);
+
+  const PARAMS = {
+      method: 'GET',
+      // credentials: 'include',
+      headers: headers(),
+    };
+
+  const response = await fetch(mdb.base_url + endpoint + apiKey);
   return response.json();
 }
 
 // Replace ID with variable
 function replaceID(string, value, replace = ':id') {
+
+  console.log(string, value, replace);
+
   if(value !== null)
     return string.replace(":id",value);
-  return value;
+  return string;
 }

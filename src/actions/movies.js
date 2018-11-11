@@ -1,4 +1,3 @@
-
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const REMOVE_MOVIE = 'REMOVE_MOVIE';
 export const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
@@ -17,17 +16,14 @@ function removeMovie(id) {
   }
 }
 
-export function recieveMovies(movies) {
+export function receiveMovies(movies) {
   return {
     type: RECEIVE_MOVIES,
     movies
   }
 }
 
-export function handleMovieData() {
-
-}
-
-export function handleAddMovie() {
-
+export function handleAddMovie(movie, cb) {
+  return (dispatch) => {
+  }
 }
