@@ -2,7 +2,7 @@ import {getInitialData} from "../util/api";
 import {receiveMovies} from "./movies";
 import {receiveTvShows} from "./tvshows";
 import {showLoading, hideLoading} from 'react-redux-loading';
-import {recieveLists} from "./lists";
+import {receiveLists} from "./lists";
 
 // Handle gathering initial data
 export function handleInitialData() {
@@ -19,22 +19,22 @@ export function handleInitialData() {
         {
           id: 'topRatedMovies',
           name: 'Top Rated Movies',
-          movies: getIdsFromResults(topRatedMovies.results)
+          mediaIds: getIdsFromResults(topRatedMovies.results)
         },
         {
           id: 'upcomingMovies',
           name: 'Upcoming Movies',
-          movies: getIdsFromResults(upcomingMovies.results)
+          mediaIds: getIdsFromResults(upcomingMovies.results)
         },
         {
           id: 'popularMovies',
           name: 'Popular Movies',
-          movies: getIdsFromResults(popularMovies.results)
+          mediaIds: getIdsFromResults(popularMovies.results)
         },
       ];
 
       dispatch(receiveMovies(movies));
-      dispatch(recieveLists(lists));
+      dispatch(receiveLists(lists));
       dispatch(hideLoading())
     })
   }

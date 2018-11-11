@@ -18,7 +18,7 @@ function removeList(id) {
 }
 
 
-export function recieveLists(lists) {
+export function receiveLists(lists) {
   return {
     type: RECEIVE_LISTS,
     lists

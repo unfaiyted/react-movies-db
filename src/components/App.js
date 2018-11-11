@@ -4,27 +4,36 @@ import {connect} from 'react-redux';
 import{handleInitialData} from "../actions/shared";
 
 import './App.css';
+import Carousel from "../containers/Carousel";
 
 class App extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     const {dispatch} = this.props;
     dispatch(handleInitialData());
   }
 
   render() {
+    const { lists } = this.props;
+    console.log(lists[0]);
+
+    const first = lists[0];
+
     return (
       <div className="App">
         <LoadingBar/>
         <div className={'container'}>
+          { (first) ? <Carousel list={first} /> : 'Loading data...'}
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({movies, lists}) {
   return {
+    movies,
+    lists
   }
 }
 
