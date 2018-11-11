@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-export default class Banner extends Component {
+export default class Logo extends Component {
 
   render() {
     return (

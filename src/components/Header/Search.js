@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-export default class Banner extends Component {
+export default class Search extends Component {
 
   render() {
     return (

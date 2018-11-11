@@ -16,7 +16,7 @@ Started...
 * SCSS Styled structure 
 
 ## FAQ
-
+1. It does nothing yet :)
 
 DATA API:
 https://developers.themoviedb.org/3/getting-started/introduction
