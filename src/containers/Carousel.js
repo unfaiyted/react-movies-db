@@ -23,7 +23,7 @@ export default class Carousel extends Component {
 
         {mediaIds.map(number => {
           return (
-            <span>{number}, </span>
+            <span key={number}>{number}, </span>
           );
           }
         )}
