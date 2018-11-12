@@ -24,6 +24,8 @@ class App extends Component {
         <LoadingBar/>
         <div className={'container'}>
           { (first) ? <Carousel list={first} /> : 'Loading data...'}
+          { (first) ? <Carousel list={lists[1]} /> : 'Loading data...'}
+          { (first) ? <Carousel list={lists[2]} /> : 'Loading data...'}
         </div>
       </div>
     );

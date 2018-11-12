@@ -1,0 +1,59 @@
+
+// Default Height of Elements
+$itemWidth: 240px;
+$itemHeight: 150px;
+
+$multiplier: 1.60;
+// Height on Hover:
+$hoverHeight: $itemHeight*$multiplier;
+$hoverWidth: $itemWidth*$multiplier;
+
+$offsetTrans: ($hoverHeight - $itemHeight) /2;
+
+$maximumCarousels: 10;
+
+
+$leftPadding: 50px;
+
+.carousel-container {
+  position: absolute;
+
+  @for $i from 1 through $maximumCarousels {
+    &:nth-of-type(#{$i}) {
+      top: $hoverHeight*($i - 1);
+    }
+  }
+
+  h2 {
+    padding-left: $leftPadding;
+    text-align: left;
+    transform: translateY($offsetTrans);
+    color: #fff;
+  }
+
+  .carousel {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+
+    button {
+      background: rgba(0,0,0,0.6);
+      color: #dedede;
+      font-weight: bold;
+      border: 0;
+      position: absolute;
+      width: $leftPadding;
+      height: $itemHeight;
+
+      &:last-of-type {
+        right:18px;
+      }
+    }
+
+  }
+
+}
+
+

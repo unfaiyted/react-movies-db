@@ -1,0 +1,41 @@
+@import "../../containers/Carousel.scss";
+
+$time: .45s;
+
+.carousel {
+  z-index: 1;
+  color: #fff;
+  padding-top: $offsetTrans;
+  position: relative;
+  .carousel-item {
+    min-width: $itemWidth;
+    margin-right: 6px;
+    min-height: $itemHeight;
+    height: $itemHeight;
+    border-radius: 2px;
+    transform: translateY(0);
+    transition: min-width $time, min-height $time, transform $time ease-out;
+
+    cursor: pointer;
+
+    &:first-of-type {
+      margin-left: $leftPadding;
+    }
+
+    &:hover {
+      min-width: $hoverWidth;
+      min-height: $hoverHeight;
+      transform: translateY(-$offsetTrans);
+      transition: all  $time ease-in;
+      z-index: 2;
+    }
+
+
+    .title {
+      font-weight: bold;
+      text-align: left;
+
+    }
+  }
+
+}
