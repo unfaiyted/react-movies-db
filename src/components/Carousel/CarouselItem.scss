@@ -8,7 +8,7 @@ $time: .45s;
   color: #fff;
   padding-top: $offsetTrans;
   position: relative;
-
+  overflow: hidden;
   .carousel-item {
     min-width: $itemWidth;
     margin-right: 6px;
