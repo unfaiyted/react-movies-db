@@ -1,3 +1,4 @@
+@import '../../css/util/mixins.scss';
 @import "../../containers/Carousel.scss";
 
 $time: .45s;
@@ -7,6 +8,7 @@ $time: .45s;
   color: #fff;
   padding-top: $offsetTrans;
   position: relative;
+
   .carousel-item {
     min-width: $itemWidth;
     margin-right: 6px;
@@ -14,22 +16,91 @@ $time: .45s;
     height: $itemHeight;
     border-radius: 2px;
     transform: translateY(0);
+    transition-delay: $time*3;
     transition: min-width $time, min-height $time, transform $time ease-out;
-
     cursor: pointer;
+
+    display: flex;
+
 
     &:first-of-type {
       margin-left: $leftPadding;
     }
 
+    .text {
+      opacity: 0;
+      padding: 15px 30px;
+      transition: opacity ease-out;
+    }
+
+    &:before {
+      @include pseudo();
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0.81) 99%, rgba(0, 0, 0, 0.82) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      opacity: 0;
+      transition: opacity $time ease-in 0.6s;
+      z-index: -1;
+    }
+
+
     &:hover {
       min-width: $hoverWidth;
       min-height: $hoverHeight;
       transform: translateY(-$offsetTrans);
-      transition: all  $time ease-in;
-      z-index: 2;
-    }
+      transition: all $time ease-in 0.3s;
 
+      &:before {
+        opacity: 1;
+        transition: opacity $time ease-in 0.6s;
+      }
+
+      .expandButton {
+        @include pseudo();
+        opacity: 1;
+        border-right: 3px solid #fff;
+        border-bottom: 3px solid #fff;
+        width: 30px;
+        height: 30px;
+        transform: rotate(45deg) skewY(-15deg) skewX(-15deg);
+        margin: 0 auto;
+        left: calc(50% - 15px);
+        bottom: 15px;
+        position: absolute;
+        transition: opacity $time ease-in 0.6s;
+
+        &:hover {
+          border-right: 3px solid #ff0000;
+          border-bottom: 3px solid #ff0000;
+        }
+
+      }
+
+      .text {
+        opacity: 1;
+        transition-delay: 1s;
+        transition: all 0.2s ease-in 0.88s;
+        height: calc(100% - 60px);
+
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        justify-content: flex-end;
+
+        .title {
+          font-weight: bold;
+          font-size: 20px;
+          }
+
+        .rating {
+          font-size: 20px;
+        }
+
+        .overview {
+          font-size: 14px;
+        }
+      }
+    }
 
     .title {
       font-weight: bold;
