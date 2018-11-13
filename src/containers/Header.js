@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
+import './Header.scss';
 export default class Header extends Component {
 
   render() {
     return (
-      <div>{this.props.children}</div>
+      <div className='header'>{this.props.children}</div>
     )
   }
 }

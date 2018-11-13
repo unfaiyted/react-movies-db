@@ -13,6 +13,7 @@ $time: .45s;
     min-width: $itemWidth;
     margin-right: 6px;
     min-height: $itemHeight;
+    border: 1px solid #1d1d1d;
     height: $itemHeight;
     border-radius: 2px;
     transform: translateY(0);
@@ -48,6 +49,7 @@ $time: .45s;
       min-width: $hoverWidth;
       min-height: $hoverHeight;
       transform: translateY(-$offsetTrans);
+      border: 1px solid #000;
       transition: all $time ease-in 0.3s;
 
       &:before {

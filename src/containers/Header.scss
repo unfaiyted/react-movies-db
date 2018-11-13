@@ -1,0 +1,13 @@
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  line-height: 21px;
+  position: sticky;
+  z-index: 100;
+  background: #372e32;
+  margin: auto;
+  padding: 10px 20px;
+  font-size: 13px;
+}

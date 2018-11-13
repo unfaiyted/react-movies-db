@@ -5,7 +5,7 @@ export default class Logo extends Component {
 
   render() {
     return (
-      <div></div>
+      <div>FAKEFLIX</div>
     )
   }
 }
