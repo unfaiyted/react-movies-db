@@ -10,6 +10,7 @@ import MenuBar from "./Header/MenuBar";
 import Logo from "./Header/Logo";
 import UserBar from "./Header/UserBar";
 import Search from "./Header/Search";
+import Footer from "../containers/Footer";
 
 class App extends Component {
 
@@ -38,6 +39,7 @@ class App extends Component {
           { (first) ? <Carousel list={lists[1]} /> : 'Loading data...'}
           { (first) ? <Carousel list={lists[2]} /> : 'Loading data...'}
         </div>
+        <Footer/>
       </div>
     );
   }

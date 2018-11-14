@@ -28,6 +28,8 @@ export default class CarouselItem extends Component {
 
     if(!this.state.selected)
       this.props.handleSelected(this.props.item.id);
+    if(this.state.selected)
+      this.props.handleSelected(null);
   };
 
   render() {

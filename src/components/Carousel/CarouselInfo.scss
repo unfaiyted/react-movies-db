@@ -2,6 +2,23 @@
   width: 100vw;
   height: 500px;
   background: #000;
-  right:0;
+  top: 205px;
   position: absolute;
+  z-index: -1;
+  animation-name: itemInfoExpand;
+  animation-duration: 0.4s;
+}
+
+
+@keyframes itemInfoExpand {
+  from {
+    left:50%;
+    height: 0;
+    width: 100px;
+  }
+  to {
+    left:0%;
+    height: 500px;
+    width: 100vw;
+    }
 }

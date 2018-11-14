@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import connect from "react-redux/es/connect/connect";
 import '../util/helpers';
+import './Carousel.scss';
+
 import CarouselItem from "../components/Carousel/CarouselItem";
-import './Carousel.scss'
 import CarouselInfo from "../components/Carousel/CarouselInfo";
+
+
 class Carousel extends Component {
   static propTypes = {
     list: PropTypes.shape({
@@ -76,7 +79,7 @@ class Carousel extends Component {
             )
           })
         }
-          {/*{(this.state.selected) ? <CarouselInfo/> : null}*/}
+          {(this.state.selectedId) ? <CarouselInfo/> : null}
         </div>
         <button className={'right'} onClick={this.handlePage}>&gt;</button>
     </div>)

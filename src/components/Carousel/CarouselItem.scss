@@ -33,6 +33,7 @@ $time: .45s;
       transition: opacity ease-out;
     }
 
+    // BG Shade
     &:before {
       @include pseudo();
       width: 100%;
@@ -51,10 +52,12 @@ $time: .45s;
       border: 1px solid #000;
       transition: all $time ease-in 0.3s;
 
+      // BG Shade
       &:before {
         opacity: 1;
         transition: opacity $time ease-in 0.6s;
       }
+
 
       .expandButton {
         @include pseudo();
@@ -111,8 +114,33 @@ $time: .45s;
 
     // Selected Item
 
+    &:after {
+      @include pseudo();
+      opacity: 0;
+      border-right:0;
+      border-bottom: 0;
+      background: #fff;
+      width: 15px;
+      height: 15px;
+      transform: rotate(45deg)  skewY(-15deg) skewX(-15deg);
+      margin: 0 auto;
+      left: calc(50% - 5px);
+      bottom: -10px;
+      position: absolute;
+      background: linear-gradient(319deg, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 51%,rgba(255,255,255,0) 52%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      transition: opacity $time ease-in 0.1s;
+    }
+
+
     &.selected {
       border: 3px solid #fff;
+      .expandButton {
+        opacity: 0;
+      }
+      &:after {
+        opacity: 1;
+        transition: opacity $time ease-in 0.35s;
+      }
     }
 
   }
