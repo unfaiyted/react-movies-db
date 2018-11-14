@@ -1,12 +1,20 @@
 
 // Default Height of Elements
-$itemWidth: 240px;
-$itemHeight: 150px;
+
+$itemsPerPage: 4;
+$padding: 50px;
 
 $multiplier: 1.60;
+
+$iWidth: (100vw / $itemsPerPage);
+
+$itemWidth: (100vw / $itemsPerPage) - #{($padding * 2) / $itemsPerPage};
+$itemHeight: 150px;
+
+
 // Height on Hover:
-$hoverHeight: $itemHeight*$multiplier;
-$hoverWidth: $itemWidth*$multiplier;
+$hoverHeight: $itemHeight * $multiplier;
+$hoverWidth: $iWidth * $multiplier;
 
 $offsetTrans: ($hoverHeight - $itemHeight) /2;
 
