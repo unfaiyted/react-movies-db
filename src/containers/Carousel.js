@@ -4,6 +4,7 @@ import connect from "react-redux/es/connect/connect";
 import '../util/helpers';
 import CarouselItem from "../components/Carousel/CarouselItem";
 import './Carousel.scss'
+import CarouselInfo from "../components/Carousel/CarouselInfo";
 class Carousel extends Component {
   static propTypes = {
     list: PropTypes.shape({
@@ -16,24 +17,68 @@ class Carousel extends Component {
   static defaultProps = {
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      page: 0,
+      selectedId: null,
+      styles: {
+        left: 0,
+        transition: "left 0.33s ease-out"
+      }
+    }
+  }
+
+
+  handlePage = (e) => {
+
+    const { page, styles } = this.state;
+    const action = (e.target.classList.contains("left")) ? page-1 : page+1;
+
+    this.setState({
+      page: (action >= 0) ? action : 0,
+      styles: {
+        ...styles,
+        left: "-"+ (page*100) + 'vw',
+      }
+    });
+
+  };
+
+  handleSelected = (id) => {
+      this.setState({
+        selectedId: id,
+      });
+
+  };
+
   render() {
-    const { id, name, mediaIds} = this.props.list;
     const {movies} = this.props;
+    const { id, name, mediaIds} = this.props.list;
+
+    const {styles, selectedId} = this.state;
 
     return (
       <div key={id} className='carousel-container'>
         <h2>{name}</h2>
-        <div className='carousel'>
-          <button>&lt;</button>
+        <button className={'left'} onClick={this.handlePage}>&lt;</button>
+
+        <div className='carousel' style={styles}>
         {
           Object.keys(movies).map((movie, i) => {
+            const item = movies[movie];
             return (
-              <CarouselItem key={i} item={movies[movie]}/>
+              <CarouselItem key={i}
+                            item={item}
+                            selected={(selectedId === item.id)}
+                            handleSelected={this.handleSelected}/>
             )
           })
         }
-          <button>&gt;</button>
+          {/*{(this.state.selected) ? <CarouselInfo/> : null}*/}
         </div>
+        <button className={'right'} onClick={this.handlePage}>&gt;</button>
     </div>)
   }
 }

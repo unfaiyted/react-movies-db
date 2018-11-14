@@ -8,7 +8,6 @@ $time: .45s;
   color: #fff;
   padding-top: $offsetTrans;
   position: relative;
-  overflow: hidden;
   .carousel-item {
     min-width: $itemWidth;
     margin-right: 6px;
@@ -45,7 +44,7 @@ $time: .45s;
     }
 
 
-    &:hover {
+    &:hover, &.selected {
       min-width: $hoverWidth;
       min-height: $hoverHeight;
       transform: translateY(-$offsetTrans);
@@ -109,6 +108,13 @@ $time: .45s;
       text-align: left;
 
     }
+
+    // Selected Item
+
+    &.selected {
+      border: 3px solid #fff;
+    }
+
   }
 
 }

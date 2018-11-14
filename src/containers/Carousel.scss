@@ -38,23 +38,27 @@ $leftPadding: 50px;
     flex-wrap: nowrap;
     position: relative;
 
-
-
-    button {
-      background: rgba(0,0,0,0.6);
-      color: #dedede;
-      font-weight: bold;
-      border: 0;
-      position: absolute;
-      width: $leftPadding;
-      height: $itemHeight;
-
-      &:last-of-type {
-        right:0px;
-      }
-    }
-
   }
+
+  button {
+    background: rgba(0,0,0,0.6);
+    color: #dedede;
+    font-weight: bold;
+    border: 0;
+    position: absolute;
+    width: $leftPadding;
+    height: $itemHeight;
+    z-index: 10;
+    left:0;
+    top: $itemHeight - 32px;
+    cursor: pointer;
+
+    &:last-of-type {
+      left: auto;
+      right:0px;
+    }
+  }
+
 
 }
 
