@@ -3,30 +3,30 @@ import  mdb, { methods } from './endpoints';
 import {key} from './security/keys';
 import headers from './security/headers';
 
-async function search(type = "Movie") {
+export async function search(type = "Movie") {
   return await fetchData('search',type)
 }
 
-async function discover(type = "Movie") {
+export async function discover(type = "Movie") {
   return await fetchData('discover',type)
 }
 
-async function find(id) {
+export async function find(id) {
   return await fetchData('find', id)
 }
 
 // Singular Movie and TV
-async function getMovie(id, type = 'Info') {
+export async function getMovie(id, type = 'Info') {
   return await fetchData('movie',type, id)
 }
 
-async function getTvShow(id, type = 'Info') {
+export async function getTvShow(id, type = 'Info') {
   return await fetchData('tv',type, id)
 }
 
 
 // Pulls a List by a specific type
-async function getMisc(type = 'LatestMovies') {
+export async function getMisc(type = 'LatestMovies') {
   return await fetchData('misc',type)
 }
 

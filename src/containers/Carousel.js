@@ -6,6 +6,7 @@ import './Carousel.scss';
 
 import CarouselItem from "../components/Carousel/CarouselItem";
 import CarouselInfo from "../components/Carousel/CarouselInfo";
+import {handleAddMovie} from "../actions/movies";
 
 
 class Carousel extends Component {
@@ -60,11 +61,11 @@ class Carousel extends Component {
 
 
   getItem = (id) => {
-    const { movies } = this.props;
+    const { movies, dispatch } = this.props;
     const matches = Object.keys(movies).filter((movie) => {
       const item = movies[movie];
       if(item.id === id) {
-        return true;
+        return  dispatch(handleAddMovie(id)).then(() => true);
       }
     });
 

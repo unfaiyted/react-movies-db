@@ -1,3 +1,5 @@
+import  {getMovie} from "../util/api";
+
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const REMOVE_MOVIE = 'REMOVE_MOVIE';
 export const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
@@ -23,7 +25,11 @@ export function receiveMovies(movies) {
   }
 }
 
-export function handleAddMovie(movie, cb) {
+export function handleAddMovie(id, cb) {
   return (dispatch) => {
+    return getMovie(id).then((res) => {
+      dispatch(addMovie(res));
+      cb();
+    }).catch(() => console.error("Error adding movie"))
   }
 }

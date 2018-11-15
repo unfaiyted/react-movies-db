@@ -1,3 +1,4 @@
+import {getTvShow} from "../util/api";
 
 export const ADD_TV = 'ADD_TV';
 export const REMOVE_TV = 'REMOVE_TV';
@@ -28,6 +29,12 @@ export function handleTvShowData() {
 
 }
 
-export function handleAddTvShow() {
 
+export function handleAddTvShows(id, cb) {
+  return (dispatch) => {
+    return getTvShow(id).then((res) => {
+      dispatch(addTvShows(res));
+      cb();
+    }).catch(() => console.error("Error adding movie"))
+  }
 }
