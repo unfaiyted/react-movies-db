@@ -40,7 +40,19 @@ export default class CarouselInfo extends Component {
               <button className='list'>+ My List</button>
             </div>
 
+
+
+
+
           </div>
+
+          <div className='view'>
+            <a href="#" className='active'>Overview</a>
+            <a href="#">Episodes</a>
+            <a href="#">More Like This</a>
+            <a href="#">Details</a>
+          </div>
+
         </div>
 
 
