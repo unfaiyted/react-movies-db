@@ -24,8 +24,9 @@ class Carousel extends Component {
     super(props);
 
     this.state = {
-      page: 0,
+      page: 1,
       selectedId: null,
+      selectedItem: null,
       styles: {
         left: 0,
         transition: "left 0.33s ease-out"
@@ -40,19 +41,34 @@ class Carousel extends Component {
     const action = (e.target.classList.contains("left")) ? page-1 : page+1;
 
     this.setState({
-      page: (action >= 0) ? action : 0,
+      page: (action > 1) ? action : 1,
       styles: {
         ...styles,
-        left: "-"+ (page*100) + 'vw',
+        left: "calc(-"+ ((page-1)*100) + 'vw + '+ (page-1)*100   + 'px)',
       }
     });
 
   };
 
   handleSelected = (id) => {
+
       this.setState({
         selectedId: id,
+        selectedItem: this.getItem(id)
       });
+  };
+
+
+  getItem = (id) => {
+    const { movies } = this.props;
+    const matches = Object.keys(movies).filter((movie) => {
+      const item = movies[movie];
+      if(item.id === id) {
+        return true;
+      }
+    });
+
+    return movies[matches[0]];
 
   };
 
@@ -60,13 +76,13 @@ class Carousel extends Component {
     const {movies} = this.props;
     const { id, name, mediaIds} = this.props.list;
 
-    const {styles, selectedId} = this.state;
+    const {styles, selectedId, selectedItem, style} = this.state;
 
     return (
-      <div key={id} className='carousel-container'>
+      <div key={id} className='carousel-container' style={{ height: (selectedId) ? '750px' : '304px' }}>
         <h2>{name}</h2>
         <button className={'left'} onClick={this.handlePage}>&lt;</button>
-
+        {/*{ (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }*/}
         <div className='carousel' style={styles}>
         {
           Object.keys(movies).map((movie, i) => {
@@ -79,8 +95,8 @@ class Carousel extends Component {
             )
           })
         }
-          {(this.state.selectedId) ? <CarouselInfo/> : null}
         </div>
+        {(selectedId) ? <CarouselInfo item={selectedItem}/> : null}
         <button className={'right'} onClick={this.handlePage}>&gt;</button>
     </div>)
   }

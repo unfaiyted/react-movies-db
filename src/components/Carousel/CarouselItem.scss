@@ -9,11 +9,11 @@ $time: .45s;
   padding-top: $offsetTrans;
   position: relative;
   .carousel-item {
-    min-width: $itemWidth;
+    min-width: calc(#{$itemWidth});
     margin-right: 6px;
-    min-height: $itemHeight;
+    min-height: calc(#{$itemHeight});
     border: 1px solid #1d1d1d;
-    height: $itemHeight;
+    height: calc(#{$itemHeight});
     border-radius: 2px;
     transform: translateY(0);
     transition-delay: $time*3;

@@ -20,7 +20,6 @@ export default class CarouselItem extends Component {
     }
   }
 
-
   toggleSelect = () => {
     this.setState({
       selected:!this.state.selected,

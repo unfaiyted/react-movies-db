@@ -1,12 +1,107 @@
+@import '../../css/util/mixins.scss';
+@import "../../containers/Carousel.scss";
+
+
 .carousel-item-info {
   width: 100vw;
   height: 500px;
   background: #000;
-  top: 205px;
-  position: absolute;
-  z-index: -1;
+  z-index: 0;
   animation-name: itemInfoExpand;
   animation-duration: 0.4s;
+  position: relative;
+  top: -112px;
+
+  color: #fff;
+  text-align: left;
+
+  padding-left: $padding;
+
+.content-wrapper {
+  background: linear-gradient(90deg, rgba(0,0,0,1) 3%,rgba(0,0,0,1) 30%,rgba(0,0,0,0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  height: 100%;
+  width: 100vw;
+  .content {
+    height: 100%;
+    width: 40vw;
+    text-shadow: none;
+    h3 {
+      font-size: 3em;
+      margin:0;
+      padding-top: 75px;
+      width: 40vw;
+    }
+
+    p.overview {
+      color: #b9b7b7;
+      font-size: 1.35em;
+      text-shadow: none;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: row;
+      font-size: 1.35em;
+      text-shadow: none;
+
+      span {
+        padding: 5px 20px 5px 0px;
+        font-weight: bold;
+        &.vote {
+          color: #2b802c;
+          font-weight: bold;
+        }
+
+        &.rating {
+          border: 1px solid #fff;
+          padding: 5px 10px;
+        }
+
+        &.seasons {
+          padding-left: 20px;
+        }
+
+      }
+    }
+
+    .actions {
+      position: relative;
+
+      button {
+        border:0;
+        padding: 15px 25px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.15em;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.03);
+        }
+
+        &.list {
+          background-color: transparent;
+          border: 1px solid #8f8f8f;
+          padding: 14px 24px;
+          &:hover {
+            background-color: rgba(17, 17, 17, 0.67);
+
+          }
+        }
+
+        &.play {
+          background-color: red;
+          margin-right: 20px;
+        }
+      }
+    }
+
+  }
+
+}
+
 }
 
 

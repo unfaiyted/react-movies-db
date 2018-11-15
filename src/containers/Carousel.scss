@@ -1,15 +1,15 @@
 
 // Default Height of Elements
 
-$itemsPerPage: 4;
+$itemsPerPage: 5;
 $padding: 50px;
 
 $multiplier: 1.60;
 
 $iWidth: (100vw / $itemsPerPage);
 
-$itemWidth: (100vw / $itemsPerPage) - #{($padding * 2) / $itemsPerPage};
-$itemHeight: 150px;
+$itemWidth: (100vw / $itemsPerPage) - #{($padding * 2) / $itemsPerPage + 8px};
+$itemHeight: 190px;
 
 
 // Height on Hover:
@@ -24,13 +24,14 @@ $maximumCarousels: 10;
 $leftPadding: 50px;
 
 .carousel-container {
-  position: absolute;
+  position: relative;
+  height: $hoverHeight;
 
-  @for $i from 1 through $maximumCarousels {
-    &:nth-of-type(#{$i}) {
-      top: $hoverHeight*($i - 1);
-    }
-  }
+  //@for $i from 1 through $maximumCarousels {
+  //  &:nth-of-type(#{$i}) {
+  //    top: $hoverHeight*($i - 1);
+  //  }
+  //}
 
   h2 {
     padding-left: $leftPadding;
@@ -50,22 +51,22 @@ $leftPadding: 50px;
 
 
 
-  button {
+  button.left, button.right {
     background: rgba(0,0,0,0.6);
     color: #dedede;
     font-weight: bold;
     border: 0;
     position: absolute;
-    width: $leftPadding;
+    width: $padding;
     height: $itemHeight;
     z-index: 10;
     left:0;
-    top: $itemHeight - 32px;
+    top: 110px;
+    //top: $itemHeight - 32px;
     cursor: pointer;
 
     &:last-of-type {
-      left: auto;
-      right:0px;
+
     }
 
 
@@ -74,7 +75,8 @@ $leftPadding: 50px;
     }
 
     &.right {
-
+      left: auto;
+      right:0px;
     }
 
   }
