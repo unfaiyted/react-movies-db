@@ -1,0 +1,83 @@
+@import '../css/util/mixins.scss';
+
+
+.banner {
+  height: 80vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #000;
+  text-align: left;
+  color: #fff;
+
+
+  .banner-wrapper {
+    height: 100%;
+    background: linear-gradient(45deg,
+            rgba(0,0,0,0.96) 15%,
+            rgba(0,0,0,0.93) 30%,
+            rgba(0,0,0,0.89) 40%,
+            rgba(0,0,0,0.79) 50%,
+            rgba(0,0,0,0.7) 64%,
+            rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 60px;
+
+    &:after {
+      @include pseudo();
+      position: relative;
+      height: 200px;
+      width: 100%;
+
+    }
+}
+
+  .banner-header {
+    font-size: 1.8em;
+  }
+
+  .info {
+    font-size: 1.45em;
+    max-width: 40vw;
+
+    .watch {
+      font-weight: bold;
+    }
+
+
+    .rating {
+      position: absolute;
+      right:0;
+      padding: 10px 70px 10px 10px;
+      border-left: 3px solid #fff;
+      background: rgba(21, 21, 21, 0.82);
+      font-size: 0.75em;
+    }
+
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      border: 0;
+      border-radius: 5px;
+      background-color: rgba(10, 10, 10, 0.83);
+      padding: 15px 45px;
+      color: #fff;
+      font-size: 1.2vw;
+      font-weight: bold;
+      margin: 10px 10px 10px 0px;
+      cursor: pointer;
+      &:hover {
+        color: #000;
+        background-color: rgba(215, 215, 215, 0.83);
+      }
+
+    }
+  }
+
+}

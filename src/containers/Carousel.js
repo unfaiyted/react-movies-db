@@ -75,12 +75,12 @@ class Carousel extends Component {
 
   render() {
     const {movies} = this.props;
-    const { id, name, mediaIds} = this.props.list;
 
+    const { id, name, mediaIds} = this.props.list;
     const {styles, selectedId, selectedItem, style} = this.state;
 
     return (
-      <div key={id} className='carousel-container' style={{ height: (selectedId) ? '750px' : '304px' }}>
+      <div key={id} className='carousel-container' style={{ height: (selectedId) ? 'calc(17.92vw  + 51vh)' : null }}>
         <h2>{name}</h2>
         <button className={'left'} onClick={this.handlePage}>&lt;</button>
         {/*{ (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }*/}

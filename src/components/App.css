@@ -6,5 +6,6 @@
 }
 
 .App .container {
-
+  top: -200px;
+  position: relative;
 }

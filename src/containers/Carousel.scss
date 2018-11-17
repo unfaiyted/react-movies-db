@@ -9,7 +9,7 @@ $multiplier: 1.60;
 $iWidth: (100vw / $itemsPerPage);
 
 $itemWidth: (100vw / $itemsPerPage) - #{($padding * 2) / $itemsPerPage + 8px};
-$itemHeight: 190px;
+$itemHeight: (56vw / $itemsPerPage);
 
 
 // Height on Hover:
@@ -61,7 +61,7 @@ $leftPadding: 50px;
     height: $itemHeight;
     z-index: 10;
     left:0;
-    top: 110px;
+    top: 10.45vh;
     //top: $itemHeight - 32px;
     cursor: pointer;
 
