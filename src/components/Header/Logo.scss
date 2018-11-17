@@ -1,0 +1,40 @@
+
+
+$letters: 8;
+$baseFont: 50px;
+$increments: 8px;
+
+$lastSize: 0;
+
+.logo {
+  color: #ff1313;
+  text-transform: uppercase;
+  margin-right: 30px;
+  margin-left: 40px;
+  span {
+    display: inline-block;
+
+    @for $i from 1 through $letters {
+
+        &:nth-of-type(#{$i}) {
+
+          //// First Half
+          //@if $i <= (0.5*$letters) {
+          //  $lastSize: $baseFont - ($increments * $i);
+          //  transform: translateY(-($increments*$i));
+          //  font-size: $lastSize;
+          //  //Second Half
+          //  $lastSize: $lastSize + ($increments * $i);
+          //} @else {
+          //  transform: translateY(($increments*$i));
+          //  font-size: $lastSize + ($increments * $i)
+          //}$i
+
+
+        }
+
+    }
+
+  }
+
+}

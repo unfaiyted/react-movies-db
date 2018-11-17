@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Banner.scss';
+import Icon from "../media/Icon";
 
 export default class Banner extends Component {
 
@@ -23,8 +24,8 @@ export default class Banner extends Component {
             <h1>{title}</h1>
           </div>
           <div className='buttons'>
-            <button>Play</button>
-            <button>+ My List</button>
+            <button> <Icon name='play'/> Play</button>
+            <button> <Icon name='plus'/> My List</button>
           </div>
           <div className='info'>
             <span className='watch'>Watch Season 1 Now</span>

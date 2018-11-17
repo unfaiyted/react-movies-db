@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-
+import Search from "./Search";
+import './UserBar.scss';
 
 export default class UserBar extends Component {
 
   render() {
     return (
-      <div></div>
+      <div className='user-bar'>
+        <Search/>
+      </div>
     )
   }
 }

@@ -31,7 +31,6 @@ class App extends Component {
         <Header>
           <Logo/>
           <MenuBar/>
-          <Search/>
           <UserBar/>
         </Header>
 
