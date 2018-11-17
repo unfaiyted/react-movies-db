@@ -68,10 +68,17 @@
       background-color: rgba(68, 68, 68, 0.43);
       padding: 15px 45px;
       color: #fff;
-      font-size: 1.2vw;
+      font-size: 1.30em;
       font-weight: bold;
       margin: 10px 15px 10px 0px;
       cursor: pointer;
+      display: inline-flex;
+
+      span {
+        padding-left: 7px;
+
+      }
+
       &:hover {
         color: #000;
         background-color: rgba(215, 215, 215, 0.83);

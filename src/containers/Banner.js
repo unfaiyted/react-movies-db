@@ -24,8 +24,8 @@ export default class Banner extends Component {
             <h1>{title}</h1>
           </div>
           <div className='buttons'>
-            <button> <Icon name='play'/> Play</button>
-            <button> <Icon name='plus'/> My List</button>
+            <button> <Icon name='play'/> <span>Play</span></button>
+            <button> <Icon name='plus'/> <span>My List</span></button>
           </div>
           <div className='info'>
             <span className='watch'>Watch Season 1 Now</span>

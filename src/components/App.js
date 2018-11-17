@@ -34,7 +34,7 @@ class App extends Component {
           <UserBar/>
         </Header>
 
-        { (first) ? <Banner item={movies[1]}/> : 'Loading data...'}
+        { (first) ? <Banner item={movies[Math.floor((Math.random() * 10) + 1)]}/> : 'Loading data...'}
         <div className={'container'}>
           { (first) ? <Carousel list={lists[0]} /> : 'Loading data...'}
           { (first) ? <Carousel list={lists[1]} /> : 'Loading data...'}

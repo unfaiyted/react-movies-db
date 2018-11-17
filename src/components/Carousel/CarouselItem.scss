@@ -16,7 +16,7 @@ $time: .45s;
     height: calc(#{$itemHeight});
     border-radius: 2px;
     transform: translateY(0);
-    transition-delay: $time*3;
+    transition-delay: $time*2;
     transition: min-width $time, min-height $time, transform $time ease-out;
     cursor: pointer;
 
@@ -49,8 +49,10 @@ $time: .45s;
       min-width: $hoverWidth;
       min-height: $hoverHeight;
       transform: translateY(-$offsetTrans);
-      border: 1px solid #000;
-      transition: all $time ease-in 0.3s;
+      transition: transform $time,
+                  min-width  $time,
+                  min-height $time,
+                   ease-in 0.3s;
 
       // BG Shade
       &:before {
