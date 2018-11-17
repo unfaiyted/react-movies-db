@@ -8,6 +8,7 @@ export default class UserBar extends Component {
     return (
       <div className='user-bar'>
         <Search/>
+
       </div>
     )
   }
