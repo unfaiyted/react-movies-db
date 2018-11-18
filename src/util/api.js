@@ -3,8 +3,8 @@ import  mdb, { methods } from './endpoints';
 import {key} from './security/keys';
 import headers from './security/headers';
 
-export async function search(type = "Movie") {
-  return await fetchData('search',type)
+export async function search(query, type = "Movie") {
+  return await queryData('search', type, query)
 }
 
 export async function discover(type = "Movie") {
@@ -48,9 +48,8 @@ export async function getInitialData() {
 }
 
 
-
 // Primary function used to fetch all data
-async function fetchData(method, type = null, id = null) {
+async function fetchData(method, type = null, id = null, query = '') {
   const apiKey = '?api_key='+ key.v3;
   const endpoint =
     (type === null) ?
@@ -64,9 +63,17 @@ async function fetchData(method, type = null, id = null) {
       headers: headers(),
     };
 
-  const response = await fetch(mdb.base_url + endpoint + apiKey);
+  // Sets query if its not null to proper syntax wrapper
+  query = (query === '') ? '' : '&query=' + query;
+
+  const response = await fetch(mdb.base_url + endpoint + apiKey + query);
   return response.json();
 }
+
+async function queryData(method, type, query) {
+  return fetchData(method, type, null, query)
+}
+
 
 // Replace ID with variable
 function replaceID(string, value, replace = ':id') {

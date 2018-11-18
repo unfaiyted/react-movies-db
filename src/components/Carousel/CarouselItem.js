@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import scrollToComponent from 'react-scroll-to-component';
+
 import './CarouselItem.scss'
 import CarouselInfo from "./CarouselInfo";
 export default class CarouselItem extends Component {
@@ -9,6 +11,8 @@ export default class CarouselItem extends Component {
     this.state = {
       selected: this.props.selected
     }
+
+    this.carouselItem = React.createRef();
 
   }
 
@@ -25,8 +29,10 @@ export default class CarouselItem extends Component {
       selected:!this.state.selected,
     });
 
-    if(!this.state.selected)
+    if(!this.state.selected) {
       this.props.handleSelected(this.props.item.id);
+      scrollToComponent(this, {offset: -100, align: 'top', duration: 600, ease: 'inExpo'});
+    }
     if(this.state.selected)
       this.props.handleSelected(null);
   };
@@ -46,7 +52,7 @@ export default class CarouselItem extends Component {
     const selected = (this.state.selected) ?  'selected' : ' ';
 
     return (
-      <div className={['carousel-item', selected].join(' ')} style={styles}>
+      <div className={['carousel-item', selected].join(' ')} style={styles} ref={this.carouselItem}>
         <div className='text'>
           <span className='rating'>{vote_average} / 10</span>
           <span className='title'>{title}</span>

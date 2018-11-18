@@ -3,21 +3,18 @@
 
 $time: .45s;
 
-.carousel {
-  z-index: 1;
-  color: #fff;
-  padding-top: $offsetTrans;
-  position: relative;
   .carousel-item {
     min-width: calc(#{$itemWidth});
+    width: calc(#{$itemWidth});
     margin-right: 6px;
     min-height: calc(#{$itemHeight});
+    height: calc(#{$itemHeight});
     border: 1px solid #1d1d1d;
     height: calc(#{$itemHeight});
     border-radius: 2px;
     transform: translateY(0);
-    transition-delay: $time*2;
-    transition: min-width $time, min-height $time, transform $time ease-out;
+    transition-delay: 1.2s;
+    transition: min-width $time, min-height $time, transform $time ease-out ;
     cursor: pointer;
 
     display: flex;
@@ -49,10 +46,17 @@ $time: .45s;
       min-width: $hoverWidth;
       min-height: $hoverHeight;
       transform: translateY(-$offsetTrans);
-      transition: transform $time,
-                  min-width  $time,
-                  min-height $time,
-                   ease-in 0.3s;
+      transition:
+                  min-width  0.1s,
+                  min-height 0.1s,
+                  transform 0.2s,
+                  ease-in 0.3s;
+
+
+      //&:nth-of-type(5n) {
+      //  transform: translateX(-200px) translateY(-$offsetTrans);
+      //}
+
 
       // BG Shade
       &:before {
@@ -147,4 +151,3 @@ $time: .45s;
 
   }
 
-}

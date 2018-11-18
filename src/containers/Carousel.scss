@@ -46,9 +46,12 @@ $leftPadding: 50px;
     flex-direction: row;
     flex-wrap: nowrap;
     position: relative;
+    z-index: 1;
+    color: #fff;
+    padding-top: $offsetTrans;
+    position: relative;
 
   }
-
 
 
   button.left, button.right {
@@ -64,10 +67,6 @@ $leftPadding: 50px;
     top: 10.45vh;
     //top: $itemHeight - 32px;
     cursor: pointer;
-
-    &:last-of-type {
-
-    }
 
 
     &.left {

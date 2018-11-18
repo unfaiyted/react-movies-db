@@ -80,7 +80,7 @@ class Carousel extends Component {
     const {styles, selectedId, selectedItem, style} = this.state;
 
     return (
-      <div key={id} className='carousel-container' style={{ height: (selectedId) ? 'calc(17.92vw  + 51vh)' : null }}>
+      <div key={id} className='carousel-container' style={{ height: (selectedId) ? 'calc(17.92vw  + 60vh)' : null }}>
         <h2>{name}</h2>
         <button className={'left'} onClick={this.handlePage}>&lt;</button>
         {/*{ (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }*/}
