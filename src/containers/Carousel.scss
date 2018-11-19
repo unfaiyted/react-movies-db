@@ -22,7 +22,6 @@ $smItemsPerPage: 1;
   @return (56vw / $items-per-page);
 }
 
-
 // Hover Size Functions
 @function calc-hover-height($items-per-page, $zoom) {
   @return calc-item-height($items-per-page) * $zoom;
@@ -33,29 +32,65 @@ $smItemsPerPage: 1;
 }
 
 
-
 @function calc-element-offset($items-per-page) {
   @return (calc-item-height($items-per-page) - calc-item-height($items-per-page)) / 2;
 }
+
+@function wrapper($function, $wrapper: false) {
+
+  @if $wrapper != false {
+    @return  '#{wrapper}(' + $function + ')';
+  } @else {
+    @return  $function;
+  }
+
+
+}
+
+
+@mixin calculated-keys($key, $function, $variable: false, $wrapper: false) {
+
+  @if $variable == false {
+    #{$key}: call(get-function($function), $defaultItemsPerPage);
+
+    @include viewports(medium large) {
+      #{$key}: call($function, $mdItemsPerPage);
+    }
+
+    @include viewports(up-to small) {
+      #{$key}: call($function, $smItemsPerPage);
+    }
+  } @else {
+      #{$key}: call(get-function($function), $defaultItemsPerPage, $variable);
+
+      @include viewports(medium large) {
+        #{$key}: call($function, $mdItemsPerPage, $variable);
+      }
+
+      @include viewports(up-to small) {
+        #{$key}: call($function, $smItemsPerPage, $variable);
+      }
+  }
+
+}
+
+
+
 
 
 .carousel-container {
   position: relative;
 
-   height: calc-item-height($defaultItemsPerPage);
-  @include viewports(up-to small) {
-    height: calc-item-height($smItemsPerPage);
-  }
-  @include viewports(medium large) {
-    height: calc-item-height($mdItemsPerPage);
-  }
+  @include calculated-keys('height', 'calc-item-height');
 
   h2 {
     padding-left: $padding;
     text-align: left;
     color: #fff;
 
+    //TODO: Modify code to allow this to work with the caluclated keys mixin
     transform: translateY(calc-element-offset($defaultItemsPerPage));
+
     @include viewports(up-to small) {
       transform: translateY(calc-element-offset($smItemsPerPage));
     }
@@ -74,13 +109,7 @@ $smItemsPerPage: 1;
     color: #fff;
     position: relative;
 
-    padding-top: calc-element-offset($defaultItemsPerPage);
-    @include viewports(up-to small) {
-      padding-top: calc-element-offset($smItemsPerPage);
-    }
-    @include viewports(medium large) {
-      padding-top: calc-element-offset($mdItemsPerPage);
-    }
+    @include calculated-keys('padding-top', 'calc-element-offset');
 
 
   }
@@ -101,14 +130,7 @@ $smItemsPerPage: 1;
     //top: $itemHeight - 32px;
     cursor: pointer;
 
-
-      height: calc-item-height($defaultItemsPerPage);
-    @include viewports(up-to small) {
-      height: calc-item-height($smItemsPerPage);
-    }
-    @include viewports(medium large) {
-      height: calc-item-height($mdItemsPerPage);
-    }
+    @include calculated-keys('height', 'calc-item-height');
 
 
 

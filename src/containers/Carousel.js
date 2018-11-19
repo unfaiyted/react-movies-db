@@ -39,17 +39,23 @@ class Carousel extends Component {
   handlePage = (e) => {
 
     const { page, styles } = this.state;
-    const action = (e.target.classList.contains("left")) ? page-1 : page+1;
+    const calculate = (e.target.classList.contains("left")) ? page-1 : page+1;
+    const action = (calculate > 1) ? calculate : 1;
 
+    // Padding Offset
     this.setState({
-      page: (action > 1) ? action : 1,
+      page: action,
       styles: {
         ...styles,
-        left: "calc(-"+ ((page-1)*100) + 'vw + '+ (page-1)*100   + 'px)',
+        left: "calc(-"+ ((action-1)*100) + 'vw + '+ (action-1)*100   + 'px)',
       }
     });
 
   };
+
+  // TODO: Add functionality to copy a page to the END.
+  // TODO: Then...later...delete last page, add left most padding
+  // TODO: Or margins to keep the "Scroll effect fluid"
 
   handleSelected = (id) => {
 

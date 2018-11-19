@@ -12,10 +12,6 @@ $time: .45s;
 
 }
 
-@mixin itemHoverSize($items-per-page, $zoom) {
-  min-width: calc-hover-width($items-per-page, $zoom);
-  min-height: calc-hover-height($items-per-page, $zoom)
-}
 
 
   .carousel-item {
@@ -28,6 +24,7 @@ $time: .45s;
     @include viewports(medium large) {
         @include itemSize(3, $padding);
     }
+
 
     margin-right: 6px;
     border: 1px solid $dark;
@@ -62,17 +59,9 @@ $time: .45s;
 
 
     &:hover, &.selected {
-      @include itemHoverSize(5, $zoom);
 
-      @include viewports(up-to small) {
-        @include itemHoverSize(1, $zoom);
-      }
-
-      @include viewports(medium large) {
-        @include itemHoverSize(3, $zoom);
-      }
-
-
+      @include calculated-keys('min-width','calc-hover-width', $zoom);
+      @include calculated-keys('min-height','calc-hover-height', $zoom);
 
       transform: translateY(- calc-element-offset($defaultItemsPerPage));
       transition:
