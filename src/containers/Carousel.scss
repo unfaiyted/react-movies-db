@@ -1,40 +1,68 @@
 @import "../css/util/_all.scss";
 // Default Height of Elements
 
-
-// Default items per page
-$itemsPerPage: 5;
-
 // Padding around Carosel Main
 $padding: 50px;
+$zoom: 1.6;
 
-// Item Zoom Multiplier
-$multiplier: 1.60;
-
-
+$defaultItemsPerPage: 5;
+$mdItemsPerPage: 3;
+$smItemsPerPage: 1;
 
 // Calculates the size of each item
-$itemWidthUncalculated: (100vw / $itemsPerPage);
-$itemWidth: $itemWidthUncalculated - #{($padding * 2) / $itemsPerPage + 8px};
-$itemHeight: (56vw / $itemsPerPage);
+@function calc-item-width($items-per-page) {
+  @return (100vw / $items-per-page);
+}
+
+@function calc-item-padded-width($items-per-page, $padding) {
+  @return calc-item-width($items-per-page) - #{($padding * 2) / $items-per-page + 8px};
+}
+
+@function calc-item-height($items-per-page) {
+  @return (56vw / $items-per-page);
+}
 
 
-// Height on Hover:
-$hoverHeight: $itemHeight * $multiplier;
-$hoverWidth: $itemWidthUncalculated * $multiplier;
+// Hover Size Functions
+@function calc-hover-height($items-per-page, $zoom) {
+  @return calc-item-height($items-per-page) * $zoom;
+}
 
-$offsetTrans: ($hoverHeight - $itemHeight) /2;
+@function calc-hover-width($items-per-page, $zoom) {
+  @return calc-item-width($items-per-page) * $zoom;
+}
+
+
+
+@function calc-element-offset($items-per-page) {
+  @return (calc-item-height($items-per-page) - calc-item-height($items-per-page)) / 2;
+}
+
 
 .carousel-container {
   position: relative;
-  height: $hoverHeight;
 
+   height: calc-item-height($defaultItemsPerPage);
+  @include viewports(up-to small) {
+    height: calc-item-height($smItemsPerPage);
+  }
+  @include viewports(medium large) {
+    height: calc-item-height($mdItemsPerPage);
+  }
 
   h2 {
     padding-left: $padding;
     text-align: left;
-    transform: translateY($offsetTrans);
     color: #fff;
+
+    transform: translateY(calc-element-offset($defaultItemsPerPage));
+    @include viewports(up-to small) {
+      transform: translateY(calc-element-offset($smItemsPerPage));
+    }
+    @include viewports(medium large) {
+      transform: translateY(calc-element-offset($mdItemsPerPage));
+    }
+
   }
 
   .carousel {
@@ -42,11 +70,18 @@ $offsetTrans: ($hoverHeight - $itemHeight) /2;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    position: relative;
     z-index: 1;
     color: #fff;
-    padding-top: $offsetTrans;
     position: relative;
+
+    padding-top: calc-element-offset($defaultItemsPerPage);
+    @include viewports(up-to small) {
+      padding-top: calc-element-offset($smItemsPerPage);
+    }
+    @include viewports(medium large) {
+      padding-top: calc-element-offset($mdItemsPerPage);
+    }
+
 
   }
 
@@ -59,12 +94,22 @@ $offsetTrans: ($hoverHeight - $itemHeight) /2;
     border: 0;
     position: absolute;
     width: $padding;
-    height: $itemHeight;
+
     z-index: 10;
     left:0;
     top: 10.45vh;
     //top: $itemHeight - 32px;
     cursor: pointer;
+
+
+      height: calc-item-height($defaultItemsPerPage);
+    @include viewports(up-to small) {
+      height: calc-item-height($smItemsPerPage);
+    }
+    @include viewports(medium large) {
+      height: calc-item-height($mdItemsPerPage);
+    }
+
 
 
     &.left {

@@ -3,14 +3,34 @@
 
 $time: .45s;
 
+
+@mixin itemSize($items-per-page, $padding) {
+  min-width: calc(#{calc-item-padded-width($items-per-page, $padding)});
+  width: calc(#{calc-item-padded-width($items-per-page, $padding)});
+  min-height: calc(#{calc-item-height($items-per-page)});
+  height: calc(#{calc-item-height($items-per-page)});
+
+}
+
+@mixin itemHoverSize($items-per-page, $zoom) {
+  min-width: calc-hover-width($items-per-page, $zoom);
+  min-height: calc-hover-height($items-per-page, $zoom)
+}
+
+
   .carousel-item {
-    min-width: calc(#{$itemWidth});
-    width: calc(#{$itemWidth});
+    @include itemSize(5, $padding);
+
+    @include viewports(up-to small) {
+      @include itemSize(1, $padding);
+    }
+
+    @include viewports(medium large) {
+        @include itemSize(3, $padding);
+    }
+
     margin-right: 6px;
-    min-height: calc(#{$itemHeight});
-    height: calc(#{$itemHeight});
     border: 1px solid $dark;
-    height: calc(#{$itemHeight});
     border-radius: 2px;
     transform: translateY(0);
     transition-delay: 1.2s;
@@ -18,7 +38,6 @@ $time: .45s;
     cursor: pointer;
 
     display: flex;
-
 
     &:first-of-type {
       margin-left: $padding;
@@ -43,9 +62,19 @@ $time: .45s;
 
 
     &:hover, &.selected {
-      min-width: $hoverWidth;
-      min-height: $hoverHeight;
-      transform: translateY(-$offsetTrans);
+      @include itemHoverSize(5, $zoom);
+
+      @include viewports(up-to small) {
+        @include itemHoverSize(1, $zoom);
+      }
+
+      @include viewports(medium large) {
+        @include itemHoverSize(3, $zoom);
+      }
+
+
+
+      transform: translateY(- calc-element-offset($defaultItemsPerPage));
       transition:
                   min-width  0.1s,
                   min-height 0.1s,
