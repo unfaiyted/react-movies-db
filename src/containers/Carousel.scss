@@ -1,40 +1,37 @@
-
+@import "../css/util/_all.scss";
 // Default Height of Elements
 
+
+// Default items per page
 $itemsPerPage: 5;
+
+// Padding around Carosel Main
 $padding: 50px;
 
+// Item Zoom Multiplier
 $multiplier: 1.60;
 
-$iWidth: (100vw / $itemsPerPage);
 
-$itemWidth: (100vw / $itemsPerPage) - #{($padding * 2) / $itemsPerPage + 8px};
+
+// Calculates the size of each item
+$itemWidthUncalculated: (100vw / $itemsPerPage);
+$itemWidth: $itemWidthUncalculated - #{($padding * 2) / $itemsPerPage + 8px};
 $itemHeight: (56vw / $itemsPerPage);
 
 
 // Height on Hover:
 $hoverHeight: $itemHeight * $multiplier;
-$hoverWidth: $iWidth * $multiplier;
+$hoverWidth: $itemWidthUncalculated * $multiplier;
 
 $offsetTrans: ($hoverHeight - $itemHeight) /2;
-
-$maximumCarousels: 10;
-
-
-$leftPadding: 50px;
 
 .carousel-container {
   position: relative;
   height: $hoverHeight;
 
-  //@for $i from 1 through $maximumCarousels {
-  //  &:nth-of-type(#{$i}) {
-  //    top: $hoverHeight*($i - 1);
-  //  }
-  //}
 
   h2 {
-    padding-left: $leftPadding;
+    padding-left: $padding;
     text-align: left;
     transform: translateY($offsetTrans);
     color: #fff;
@@ -54,6 +51,7 @@ $leftPadding: 50px;
   }
 
 
+  //TODO: Fix Dynamic height to match all resolutions.
   button.left, button.right {
     background: rgba(0,0,0,0.6);
     color: #dedede;
@@ -75,7 +73,7 @@ $leftPadding: 50px;
 
     &.right {
       left: auto;
-      right:0px;
+      right:0;
     }
 
   }

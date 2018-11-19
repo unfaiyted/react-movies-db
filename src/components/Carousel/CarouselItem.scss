@@ -1,4 +1,4 @@
-@import '../../css/util/mixins.scss';
+@import '../../css/util/_all.scss';
 @import "../../containers/Carousel.scss";
 
 $time: .45s;
@@ -9,7 +9,7 @@ $time: .45s;
     margin-right: 6px;
     min-height: calc(#{$itemHeight});
     height: calc(#{$itemHeight});
-    border: 1px solid #1d1d1d;
+    border: 1px solid $dark;
     height: calc(#{$itemHeight});
     border-radius: 2px;
     transform: translateY(0);
@@ -21,7 +21,7 @@ $time: .45s;
 
 
     &:first-of-type {
-      margin-left: $leftPadding;
+      margin-left: $padding;
     }
 
     .text {
@@ -80,8 +80,8 @@ $time: .45s;
         transition: opacity $time ease-in 0.6s;
 
         &:hover {
-          border-right: 3px solid #ff0000;
-          border-bottom: 3px solid #ff0000;
+          border-right: 3px solid $red;
+          border-bottom: 3px solid $red;
         }
 
       }
@@ -139,7 +139,7 @@ $time: .45s;
 
 
     &.selected {
-      border: 3px solid #fff;
+      border: 3px solid $white;
       .expandButton {
         opacity: 0;
       }

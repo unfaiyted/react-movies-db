@@ -1,4 +1,4 @@
-
+@import "../../css/util/_all.scss";
 
 $letters: 8;
 $baseFont: 50px;
@@ -7,7 +7,7 @@ $increments: 8px;
 $lastSize: 0;
 
 .logo {
-  color: #ff1313;
+  color: $red;
   text-transform: uppercase;
   margin-right: 30px;
   margin-left: 40px;

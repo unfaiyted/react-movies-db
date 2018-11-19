@@ -1,4 +1,4 @@
-@import '../css/util/mixins.scss';
+@import '../css/util/_all.scss';
 
 
 .banner {
@@ -7,7 +7,7 @@
   margin: 0;
   background-color: #000;
   text-align: left;
-  color: #fff;
+  color: $white;
 
 
   .banner-wrapper {
@@ -18,8 +18,7 @@
             rgba(0,0,0,0.89) 40%,
             rgba(0,0,0,0.79) 50%,
             rgba(0,0,0,0.7) 64%,
-            rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            rgba(0,0,0,0) 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -67,10 +66,10 @@
       border-radius: 5px;
       background-color: rgba(68, 68, 68, 0.43);
       padding: 15px 45px;
-      color: #fff;
+      color: $white;
       font-size: 1.30em;
       font-weight: bold;
-      margin: 10px 15px 10px 0px;
+      margin: 10px 15px 10px 0;
       cursor: pointer;
       display: inline-flex;
 
