@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import './CarouselInfo.scss'
+import ItemOverview from "./ItemOverview";
 
 export default class CarouselInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'overview'
+    }
+  }
+
+
+  handleSwitchView = (e) => {
+
+      this.setState({
+        view: e.target.getAttribute('data-id')
+      });
+
+    };
 
   render() {
-
     const {
       id, title, poster_path, release_date, vote_average,
       overview, backdrop_path, adult
@@ -22,35 +37,14 @@ export default class CarouselInfo extends Component {
       <div className='carousel-item-info' style={styles}>
         <div className='content-wrapper'>
           <div className='content'>
-            <h3>{title}</h3>
-
-            <div className='stats'>
-              <span className='vote'> {vote_average} / 10</span>
-              <span className='release'> {release_date.substring(0,4)}  </span>
-              <span className='rating'> TV-G  </span>
-              <span className='seasons'> 2 seasons </span>
-            </div>
-
-            <p className='overview'>
-              {overview.substring(0,200)}...
-            </p>
-
-            <div className='actions'>
-              <button className='play'>Play</button>
-              <button className='list'>+ My List</button>
-            </div>
-
-
-
-
-
+            <ItemOverview item={this.props.item}/>
           </div>
 
           <div className='view'>
-            <a href="#" className='active'>Overview</a>
-            <a href="#">Episodes</a>
-            <a href="#">More Like This</a>
-            <a href="#">Details</a>
+            <a href="#" data-id="overview" onClick={this.handleSwitchView} className='active'>Overview</a>
+            <a href="#" data-id="episodes" onClick={this.handleSwitchView} >Episodes</a>
+            <a href="#" data-id="similar"  onClick={this.handleSwitchView} >More Like This</a>
+            <a href="#" data-id="details"  onClick={this.handleSwitchView} >Details</a>
           </div>
 
         </div>
