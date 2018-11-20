@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './CarouselInfo.scss'
+import {shortenText} from "../../util/helpers";
 
 export default class ItemOverview extends Component {
 
@@ -30,7 +31,7 @@ export default class ItemOverview extends Component {
             </div>
 
             <p className='overview'>
-              {overview.substring(0,200)}...
+              {shortenText(overview, 200)}
             </p>
 
             <div className='actions'>
