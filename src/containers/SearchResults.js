@@ -50,11 +50,15 @@ class SearchResults extends Component {
         <h2>Search Results</h2>
 
           <div className={'results-container'}>
-            {(typeof search.results === "object") ? search.results.map((item, i) => (
+            {(typeof search.results === "object") ? search.results.map((item, i) => {
 
-              <CarouselItem key={i} item={item}/>
+              return (
+              <div>
+                <CarouselItem key={i} item={item}/>
+              </div>
+                )
+              }
 
-              )
             ) : null}
           </div>
 

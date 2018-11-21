@@ -65,6 +65,12 @@ class Carousel extends Component {
       });
   };
 
+  handleClose = () => {
+    this.setState({
+      selectedId: null
+    })
+  };
+
 
   getItem = (id) => {
     const { movies, dispatch } = this.props;
@@ -103,7 +109,7 @@ class Carousel extends Component {
           })
         }
         </div>
-        {(selectedId) ? <CarouselInfo item={selectedItem}/> : null}
+        {(selectedId) ? <CarouselInfo item={selectedItem} close={this.handleClose}/> : null}
         <button className={'right'} onClick={this.handlePage}>&gt;</button>
     </div>)
   }

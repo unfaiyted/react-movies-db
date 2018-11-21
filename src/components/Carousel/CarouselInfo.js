@@ -4,6 +4,7 @@ import ItemOverview from "./ItemOverview";
 import ItemEpisodes from "./ItemEpisodes";
 import ItemSimilar from "./ItemSimilar";
 import ItemDetails from "./ItemDetails";
+import Icon from "../../media/Icon";
 
 
 const views = [
@@ -46,6 +47,11 @@ export default class CarouselInfo extends Component {
 
     };
 
+  handleClose = () => {
+    this.props.close();
+  };
+
+
   render() {
     const {
       id, title, poster_path, release_date, vote_average,
@@ -64,6 +70,7 @@ export default class CarouselInfo extends Component {
 
     return (
       <div className='carousel-item-info' style={styles}>
+
         <div className='content-wrapper'>
 
             {(view === 'overview') ? <ItemOverview item={this.props.item}/> : null }
@@ -83,7 +90,7 @@ export default class CarouselInfo extends Component {
              ))
             }
           </div>
-
+          <Icon name='times' color='#fff'  onClick={this.handleClose} className='close'/>
         </div>
       </div>
     )
