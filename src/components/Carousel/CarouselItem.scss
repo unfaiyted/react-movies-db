@@ -1,9 +1,9 @@
 @import '../../css/util/_all.scss';
-@import "../../containers/Carousel.scss";
+@import "./Carousel.scss";
 
 $time: .45s;
 
-
+// Add caculated sizes for css.
 @mixin itemSize($items-per-page, $padding) {
   min-width: calc(#{calc-item-padded-width($items-per-page, $padding)});
   width: calc(#{calc-item-padded-width($items-per-page, $padding)});
@@ -11,8 +11,6 @@ $time: .45s;
   height: calc(#{calc-item-height($items-per-page)});
 
 }
-
-
 
   .carousel-item {
 
