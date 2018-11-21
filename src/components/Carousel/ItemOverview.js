@@ -12,7 +12,7 @@ export default class ItemOverview extends Component {
     } = this.props.item;
 
     const styles = {
-      backgroundImage: `url("https://image.tmdb.org/t/p/w500/${backdrop_path}")`,
+      backgroundImage: `url("https://image.tmdb.org/t/p/w1280/${backdrop_path}")`,
       backgroundSize: '70% 100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'right'

@@ -15,16 +15,16 @@ $time: .45s;
 
 
   .carousel-item {
-    @include itemSize(5, $padding);
 
-    @include viewports(up-to small) {
+    @include viewports(up-to tiny) {
       @include itemSize(1, $padding);
     }
-
-    @include viewports(medium large) {
+    @include viewports(above tiny) {
         @include itemSize(3, $padding);
     }
-
+    @include viewports(above medium) {
+      @include itemSize(5, $padding);
+    }
 
     margin-right: 6px;
     border: 1px solid $dark;

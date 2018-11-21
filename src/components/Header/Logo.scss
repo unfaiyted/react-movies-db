@@ -11,8 +11,13 @@ $lastSize: 0;
   text-transform: uppercase;
   margin-right: 30px;
   margin-left: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+
   span {
     display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
 
     @for $i from 1 through $letters {
 

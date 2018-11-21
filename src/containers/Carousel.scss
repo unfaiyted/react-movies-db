@@ -3,7 +3,7 @@
 
 // Padding around Carosel Main
 $padding: 50px;
-$zoom: 1.6;
+$zoom: 1.4;
 
 $defaultItemsPerPage: 5;
 $mdItemsPerPage: 3;
@@ -51,37 +51,38 @@ $smItemsPerPage: 1;
 @mixin calculated-keys($key, $function, $variable: false, $wrapper: false) {
 
   @if $variable == false {
-    #{$key}: call(get-function($function), $defaultItemsPerPage);
 
-    @include viewports(medium large) {
-      #{$key}: call($function, $mdItemsPerPage);
-    }
-
-    @include viewports(up-to small) {
+    @include viewports(up-to tiny) {
       #{$key}: call($function, $smItemsPerPage);
     }
+    @include viewports(above tiny) {
+      #{$key}: call($function, $mdItemsPerPage);
+    }
+    @include viewports(above medium) {
+      #{$key}: call(get-function($function), $defaultItemsPerPage);
+    }
+
   } @else {
+
+    @include viewports(up-to tiny) {
+      #{$key}: call($function, $smItemsPerPage, $variable);
+    }
+    @include viewports(above tiny) {
+      #{$key}: call($function, $mdItemsPerPage, $variable);
+    }
+    @include viewports(above medium) {
       #{$key}: call(get-function($function), $defaultItemsPerPage, $variable);
+    }
 
-      @include viewports(medium large) {
-        #{$key}: call($function, $mdItemsPerPage, $variable);
-      }
-
-      @include viewports(up-to small) {
-        #{$key}: call($function, $smItemsPerPage, $variable);
-      }
   }
 
 }
 
 
-
-
-
 .carousel-container {
   position: relative;
 
-  @include calculated-keys('height', 'calc-item-height');
+  @include calculated-keys('height', 'calc-hover-height', $zoom);
 
   h2 {
     padding-left: $padding;
@@ -89,13 +90,15 @@ $smItemsPerPage: 1;
     color: #fff;
 
     //TODO: Modify code to allow this to work with the caluclated keys mixin
-    transform: translateY(calc-element-offset($defaultItemsPerPage));
 
-    @include viewports(up-to small) {
+    @include viewports(up-to tiny) {
       transform: translateY(calc-element-offset($smItemsPerPage));
     }
-    @include viewports(medium large) {
+    @include viewports(above tiny) {
       transform: translateY(calc-element-offset($mdItemsPerPage));
+    }
+    @include viewports(above medium) {
+      transform: translateY(calc-element-offset($defaultItemsPerPage));
     }
 
   }
@@ -122,16 +125,13 @@ $smItemsPerPage: 1;
     border: 0;
     position: absolute;
     width: $padding;
-
     z-index: 10;
     left:0;
-    top: 10.45vh;
+    top: 5.36vh;
     //top: $itemHeight - 32px;
     cursor: pointer;
 
     @include calculated-keys('height', 'calc-item-height');
-
-
 
     &.left {
 
