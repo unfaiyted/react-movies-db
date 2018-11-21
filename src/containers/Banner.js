@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Banner.scss';
 import Icon from "../media/Icon";
+import {shortenText} from "../util/helpers";
 
 export default class Banner extends Component {
 
@@ -27,10 +28,11 @@ export default class Banner extends Component {
             <button> <Icon name='play'/> <span>Play</span></button>
             <button> <Icon name='plus'/> <span>My List</span></button>
           </div>
+
           <div className='info'>
             <span className='watch'>Watch Season 1 Now</span>
             <p>
-              {overview.substring(0,100)}...
+              {shortenText(overview)}
             </p>
 
             <div className='rating'>

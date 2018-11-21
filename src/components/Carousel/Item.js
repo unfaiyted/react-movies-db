@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import scrollToComponent from 'react-scroll-to-component';
 
-import './CarouselItem.scss'
-import CarouselInfo from "./CarouselInfo";
-export default class CarouselItem extends Component {
+import './Item.scss'
+
+export default class Item extends Component {
 
   constructor(props) {
     super(props);

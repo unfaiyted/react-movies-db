@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SearchResults.scss';
 import connect from "react-redux/es/connect/connect";
 import {handleMovieSearch} from "../actions/search";
-import CarouselItem from "../components/Carousel/CarouselItem";
+import Item from "../components/Carousel/Item";
 
 class SearchResults extends Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class SearchResults extends Component {
 
               return (
               <div>
-                <CarouselItem key={i} item={item}/>
+                <Item key={i} item={item}/>
               </div>
                 )
               }

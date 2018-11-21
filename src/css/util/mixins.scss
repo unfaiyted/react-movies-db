@@ -4,3 +4,22 @@
   position: $pos;
 }
 
+// Padding
+@mixin padding($padding-map, $pg-breakpoints: $breakpoints) {
+  @each $pg-breakpoint, $padding in $padding-map {
+    @if $pg-breakpoint == null {
+      padding: $padding;
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($pg-breakpoints, $pg-breakpoint) {
+        $pg-breakpoint: map-get($pg-breakpoints, $pg-breakpoint);
+      }
+      @media screen and (min-width: $pg-breakpoint) {
+        padding: $padding;
+      }
+    }
+  }
+}
+
