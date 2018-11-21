@@ -16,7 +16,9 @@ export function shortenText(text,maxLength) {
 
 }
 
-
+export function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(window.location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
 
 // Adds object filter capability
 Object.filter = (obj, predicate) =>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import connect from "react-redux/es/connect/connect";
-import '../util/helpers';
+import '../../util/helpers';
 import './Carousel.scss';
 
-import CarouselItem from "../components/Carousel/CarouselItem";
-import CarouselInfo from "../components/Carousel/CarouselInfo";
-import {handleAddMovie} from "../actions/movies";
+import CarouselItem from "./Item";
+import CarouselInfo from "./CarouselInfo";
+import {handleAddMovie} from "../../actions/movies";
 
 
 class Carousel extends Component {

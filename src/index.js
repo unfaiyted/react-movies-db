@@ -3,17 +3,28 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './index.css';
-import App from './components/App';
+
 import * as serviceWorker from './serviceWorker';
 
 import reducers from './reducers/index';
 import middleware from './middleware/index';
 
+import Test from "./components/Test/Test";
+import App from './components/App';
+import {getURLParameter} from "./util/helpers";
+
+
 const store = createStore(reducers, middleware);
+
+
+const isTest = getURLParameter('test');
 
 ReactDOM.render(
   <Provider store={store}>
-      <App />
+    {(isTest !== "true") ?
+      <App /> :
+      <Test />
+    }
   </Provider>,
   document.getElementById('root'));
 

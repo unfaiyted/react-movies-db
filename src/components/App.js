@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import{handleInitialData} from "../actions/shared";
 
 import './App.css';
-import Carousel from "../containers/Carousel";
-import Header from "../containers/Header";
+import Carousel from "./Carousel/Carousel";
+import Header from "./Header/Header";
 import MenuBar from "./Header/MenuBar";
 import Logo from "./Header/Logo";
 import UserBar from "./Header/UserBar";
