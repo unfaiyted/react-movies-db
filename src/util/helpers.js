@@ -7,7 +7,7 @@ export function getPercentage (count, total) {
 }
 
 
-// Shorten the text and append ellipsis. 
+// Shorten the text and append ellipsis.
 export function shortenText(text,maxLength) {
   if(text.length > maxLength) {
     return text.substring(0,maxLength) + '...';
@@ -17,6 +17,8 @@ export function shortenText(text,maxLength) {
 }
 
 
+
+// Adds object filter capability
 Object.filter = (obj, predicate) =>
   Object.keys(obj)
     .filter( key => predicate(obj[key]) )
