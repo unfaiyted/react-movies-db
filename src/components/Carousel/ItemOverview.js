@@ -20,7 +20,7 @@ export default class ItemOverview extends Component {
 
 
     return (
-          <div className='item-overview'>
+          <div className='content item-overview'>
             <h3>{title}</h3>
 
             <div className='stats'>

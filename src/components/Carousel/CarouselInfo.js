@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
 import './CarouselInfo.scss'
 import ItemOverview from "./ItemOverview";
+import ItemEpisodes from "./ItemEpisodes";
+import ItemSimilar from "./ItemSimilar";
+import ItemDetails from "./ItemDetails";
+
+
+const views = [
+  {
+    view: 'overview',
+    text: 'Overview',
+
+  },
+  {
+    view: 'episodes',
+    text: 'Episodes',
+  },
+  {
+    view: 'similar',
+    text: 'More Like This',
+  },
+  {
+    view: 'details',
+    text: 'Details',
+  }
+];
+
 
 export default class CarouselInfo extends Component {
   constructor(props) {
@@ -10,10 +35,12 @@ export default class CarouselInfo extends Component {
     }
   }
 
-
   handleSwitchView = (e) => {
+      e.preventDefault();
 
-      this.setState({
+    console.log(e.target.getAttribute('data-id'));
+
+    this.setState({
         view: e.target.getAttribute('data-id')
       });
 
@@ -25,8 +52,10 @@ export default class CarouselInfo extends Component {
       overview, backdrop_path, adult
     } = this.props.item;
 
+    const { view } = this.state;
+
     const styles = {
-      backgroundImage: `url("https://image.tmdb.org/t/p/w500/${backdrop_path}")`,
+      backgroundImage: `url("https://image.tmdb.org/t/p/w1280/${backdrop_path}")`,
       backgroundSize: '70% 100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'right'
@@ -36,22 +65,26 @@ export default class CarouselInfo extends Component {
     return (
       <div className='carousel-item-info' style={styles}>
         <div className='content-wrapper'>
-          <div className='content'>
-            <ItemOverview item={this.props.item}/>
-          </div>
+
+            {(view === 'overview') ? <ItemOverview item={this.props.item}/> : null }
+            {(view === 'episodes') ? <ItemEpisodes item={this.props.item}/> : null }
+            {(view === 'similar') ? <ItemSimilar item={this.props.item}/> : null }
+            {(view === 'details') ? <ItemDetails item={this.props.item}/> : null }
 
           <div className='view'>
-            <a href="#" data-id="overview" onClick={this.handleSwitchView} className='active'>Overview</a>
-            <a href="#" data-id="episodes" onClick={this.handleSwitchView} >Episodes</a>
-            <a href="#" data-id="similar"  onClick={this.handleSwitchView} >More Like This</a>
-            <a href="#" data-id="details"  onClick={this.handleSwitchView} >Details</a>
+            {
+              views.map(item => (
+                 <a href="#"
+                    data-id={item.view}
+                    onClick={this.handleSwitchView}
+                    className={(item.view === view) ? 'active' : null}>
+                   {item.text}
+                 </a>
+             ))
+            }
           </div>
 
         </div>
-
-
-
-
       </div>
     )
   }
