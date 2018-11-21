@@ -8,7 +8,7 @@ Technical challenge. Use data from themoviedb to populate content.
 3. npm install
 4. Setup your `keys.json` file
     * Example file provided `example.keys.json`
-    * needed to access the API backend. 
+    * needed to access the API backend. (using v3)
     * You may need to request an API key from them.
 
 
