@@ -23,3 +23,22 @@
   }
 }
 
+// Function will map an array to various breakpoints
+@mixin map-to-property($property, $map, $map-breakpoints: $breakpoints) {
+  @each $map-breakpoint, $value in $map {
+    @if $map-breakpoint == null {
+      #{$property}: $value;
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($map-breakpoints, $map-breakpoint) {
+        $pg-breakpoint: map-get($map-breakpoints, $map-breakpoint);
+      }
+      @media screen and (min-width: $map-breakpoint) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
