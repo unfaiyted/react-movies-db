@@ -1,5 +1,5 @@
 # react-movie-db (FAKEFLIX)
-Recreate user interface used by []netflix.com](https://www.netflix.com). 
+Recreate user interface used by [netflix.com](https://www.netflix.com). 
 Technical challenge. Use data from themoviedb to populate content. 
 
 Sample Application:

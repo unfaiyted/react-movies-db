@@ -33,7 +33,7 @@
       // If $fs-font-size is a key that exists in
       // $fs-breakpoints, use the value
       @if map-has-key($map-breakpoints, $map-breakpoint) {
-        $pg-breakpoint: map-get($map-breakpoints, $map-breakpoint);
+        $map-breakpoint: map-get($map-breakpoints, $map-breakpoint);
       }
       @media screen and (min-width: $map-breakpoint) {
         #{$property}: $value;

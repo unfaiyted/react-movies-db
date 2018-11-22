@@ -27,40 +27,59 @@ $lg-btn-font-sizes: (
 );
 
 
-
 // PADDINGS
 $btn-padding-sizes: (
-  null : 5px 10px,
-  small: 5px 10px,
-  medium: 30px 30px
+        tiny:  8px 18px,
+        small:  10px 20px,
+        medium: 14px 24px,
+        large: 14px 24px,
 );
 
+$btn-big-padding-sizes: (
+        tiny:  10px 30px,
+        small:  10px 30px,
+        medium: 15px 40px,
+        large: 15px 40px,
+);
+
+
 $round-padding-sizes: (
-        null : 10px,
-        small: 15px,
-        medium: 20px
+        null: 12px,
+        tiny: 12px,
+        small: 18px,
+        medium: 24px,
+        large: 24px
 );
 
 
 
 // ICON SIZES
 $btn-icon-sizes: (
-        null: 24px,
+        null: 12px,
         tiny: 12px,
         small: 18px,
         medium: 24px,
-        large: 30px
+        large: 24px
+);
+
+$btn-big-icon-sizes: (
+        null: 24px,
+        tiny: 24px,
+        small: 30px,
+        medium: 36px,
+        large: 40px
 );
 
 
 
-
 @mixin btn-setup($text-color: #fff, $color: #000) {
-  border: 0;
+
+  border: 1px solid transparent;
   border-radius: 2px;
   color: $text-color;
   background-color: $color;
   cursor: pointer;
+  text-transform: uppercase;
 
   @include font-size($btn-font-sizes);
   @include padding($btn-padding-sizes);
@@ -87,7 +106,7 @@ $btn-icon-sizes: (
     border-color: $white;
     color: $white;
     transform: scale(1.1);
-    transition: all 0.3s;
+    transition: all 0.66s;
 
   }
 }
@@ -101,24 +120,38 @@ $btn-icon-sizes: (
 .btn  {
   @include btn-setup();
 
+  &.round {
+    @include round-btn();
 
     // Set Icon sizes
-    .icon {
+    svg.icon {
       @include map-to-property('width', $btn-icon-sizes);
       @include map-to-property('height', $btn-icon-sizes);
     }
 
+    &.big {
+      border: 3px solid transparentize($white, 0.5);
+      color: transparentize($white, 0.5);
+      svg.icon {
+        transform: translateX(2px);
+        @include map-to-property('width', $btn-big-icon-sizes);
+        @include map-to-property('height', $btn-big-icon-sizes);
+      }
 
+      &:hover {
+        border-color: $white;
+        color: $red;
+        transition: all 0.66s;
 
-  &.round {
-    @include round-btn()
+      }
 
+    }
 
 
   }
 
-  &.big {
-
+  &.big:not(.round) {
+    @include padding($btn-big-padding-sizes);
   }
 
   // COLORS
@@ -129,16 +162,17 @@ $btn-icon-sizes: (
   }
 
   &.green {
-
+    background-color: $green;
   }
 
   &.hollow {
     background-color: transparent;
-    border-color: 1px solid $grey-border;
+    border: 1px solid $grey-border;
 
     &:hover {
       background-color: $hollow-hover;
-      color: white;
+      color: $white;
+
     }
 
   }
