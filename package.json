@@ -1,8 +1,10 @@
 {
   "name": "react-movies-db",
   "version": "0.1.0",
+  "homepage": "https://unfaiyted.github.io/react-movies-db/",
   "private": true,
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
@@ -17,6 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

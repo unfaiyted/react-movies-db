@@ -2,6 +2,9 @@
 Recreate user interface used by []netflix.com](https://www.netflix.com). 
 Technical challenge. Use data from themoviedb to populate content. 
 
+Sample Application:
+ [FakeFlix](https://unfaiyted.github.io/react-movies-db)
+
 ## Getting Started
 1. Clone repo!
 2. Setup either package manager yarn/npm
