@@ -111,11 +111,7 @@ $btn-big-icon-sizes: (
   }
 }
 
-.test-container{
- button {
-   margin-right: 15px;
- }
-}
+
 
 .btn  {
   @include btn-setup();

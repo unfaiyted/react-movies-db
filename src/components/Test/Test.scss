@@ -1,6 +1,14 @@
 @import "../../css/util/_all.scss";
 
 
+.test-container{
+  button {
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+
 .test-container {
   background-color: $black;
   width: 100vw;
@@ -17,6 +25,12 @@
       margin: 10px 0;
       h2 {
         margin: 0 0 15px 0;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
       }
 
     }

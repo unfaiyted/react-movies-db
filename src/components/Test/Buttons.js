@@ -25,6 +25,12 @@ export default class ButtonsTest extends Component {
             <button  className='big btn'>My List</button>
             <button className='big btn'>Next Episode</button>
             <button  className='big btn'>More</button>
+
+          <div className='row'>
+            <button className='big btn'><Icon name='play'/><span>Play</span></button>
+            <button  className='big btn'><Icon name='plus'/><span>My List</span></button>
+          </div>
+
         </div>
 
         <div className={'container'}>
@@ -35,6 +41,9 @@ export default class ButtonsTest extends Component {
             <button className='round btn'><Icon name='volume-mute'/></button>
             <button className='round btn'><Icon name='volume-up'/></button>
             <button className='round btn'><Icon name='plus'/></button>
+
+
+
         </div>
 
         <div className={'container'}>
