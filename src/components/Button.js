@@ -17,17 +17,23 @@ export default class Button extends Component {
     color: 'default'
   };
 
+  handleClick = () => {
+    this.props.onClick();
+  };
 
   render() {
 
     const { size, type, text, color, icon } = this.props;
 
     return (
-      <button className={['btn', size, type, color].join(' ')}>
+      <button
+        onClick={this.handleClick}
+        className={['btn', size, type, color].join(' ')}>
 
         {(icon) ? <Icon name='play'/> : null }
         {(text) ? <span>{text}</span> : null }
 
+        {this.props.children}
       </button>
     )
   }

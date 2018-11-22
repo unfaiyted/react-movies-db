@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Icon from "../../media/Icon";
+import Button from "../Button";
 
 export default class ButtonsTest extends Component {
 
@@ -12,10 +13,16 @@ export default class ButtonsTest extends Component {
 
         <div className={'container'}>
           <h2>Buttons</h2>
-          <button  className='btn'>Play</button>
+          <button className='btn'>Play</button>
           <button className='btn'>My List</button>
           <button className='btn red'>Resume</button>
           <button className='btn hollow'>More</button>
+
+            <div className='row'>
+            <Button type='square-rounded' text='Play'/>
+              <Button type='square-rounded' color='red' text='Resume'/>
+            </div>
+
         </div>
 
 
