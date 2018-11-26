@@ -17,12 +17,32 @@
   color: $white;
 
 
+
+  .test-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    div {
+      padding: 20px;
+
+      a {
+        color: $white;
+
+      }
+
+    }
+
+  }
+
+
   .sub-container {
 
     .container {
       background-color: darken($black, 3.5%);
       padding: 30px 20px;
       margin: 10px 0;
+
       h2 {
         margin: 0 0 15px 0;
       }
@@ -35,7 +55,39 @@
 
     }
 
-  }
 
+
+    .color-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      div {
+        padding: 20px;
+        border-bottom: $grey-border;
+      }
+
+      .color {
+        height: 5vw;
+        width: 5vw;
+
+      }
+
+      .color-text {
+          color: $grey;
+        font-size: 1.0em;
+      }
+
+      .color-var {
+          span {
+            color: darken($grey, 10%);
+            font-size: 0.75em;
+          }
+      }
+
+    }
+
+
+  }
 
 }

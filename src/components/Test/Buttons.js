@@ -49,8 +49,6 @@ export default class ButtonsTest extends Component {
             <button className='round btn'><Icon name='volume-up'/></button>
             <button className='round btn'><Icon name='plus'/></button>
 
-
-
         </div>
 
         <div className={'container'}>

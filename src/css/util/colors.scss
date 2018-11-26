@@ -7,9 +7,32 @@ $grey: #dedede;
 $grey-border:  #8f8f8f;
 $dark: #43465e;
 $darker: #131834;
-
 $black: #221f1f;
-
 $hollow: tranparant;
-
 $hollow-hover: rgba(17, 17, 17, 0.67);
+
+// TODO: Create function that caculated color steps
+@function color-up($color, $steps) {
+
+}
+
+@function color-down($color, $steps) {
+
+}
+
+
+
+
+:export {
+    white: $white;
+    red: $red;
+    green: $green;
+    grey: $grey;
+    grey-border: $grey-border;
+    dark: $dark;
+    darker: $darker;
+    black: $black;
+    hollow: $hollow;
+    hollow-hover: $hollow-hover;
+
+}
