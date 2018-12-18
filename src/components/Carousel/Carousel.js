@@ -42,6 +42,9 @@ class Carousel extends Component {
     const calculate = (e.target.classList.contains("left")) ? page-1 : page+1;
     const action = (calculate > 1) ? calculate : 1;
 
+    // Copy pages content to end.
+    // Get Page size
+
     // Padding Offset
     this.setState({
       page: action,
@@ -94,8 +97,9 @@ class Carousel extends Component {
     return (
       <div key={id} className='carousel-container' style={{ height: (selectedId) ? 'calc(17.92vw  + 60vh)' : null }}>
         <h2>{name}</h2>
-        <button className={'left'} onClick={this.handlePage}>&lt;</button>
-        {/*{ (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }*/}
+
+        { (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }
+
         <div className='carousel' style={styles}>
         {
           Object.keys(movies).map((movie, i) => {

@@ -29,10 +29,12 @@ export default class Item extends Component {
       selected:!this.state.selected,
     });
 
+
     if(!this.state.selected) {
       this.props.handleSelected(this.props.item.id);
       scrollToComponent(this, {offset: -100, align: 'top', duration: 600, ease: 'inExpo'});
     }
+
     if(this.state.selected)
       this.props.handleSelected(null);
   };
@@ -53,14 +55,13 @@ export default class Item extends Component {
 
     return (
       <div className={['carousel-item', selected].join(' ')} style={styles} ref={this.carouselItem}>
-        <div className='text'>
-          <span className='rating'>{vote_average} / 10</span>
-          <span className='title'>{title}</span>
-          <span className='overview'>{overview.substring(0, 100)}</span>
-        </div>
-        <span className='expandButton' onClick={this.toggleSelect} />
-
-        </div>
+          <div className='text'>
+              <span className='rating'>{vote_average} / 10</span>
+              <span className='title'>{title}</span>
+              <span className='overview'>{overview.substring(0, 100)}</span>
+          </div>
+          <span className='expandButton' onClick={this.toggleSelect} />
+      </div>
     )
   }
 }

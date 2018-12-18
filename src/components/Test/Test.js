@@ -3,13 +3,11 @@ import "./Test.scss"
 import ButtonsTest from "./Buttons";
 import TypographyTest from "./Typography";
 import ColorsTest from "./Colors";
-
-import styles from './Test.scss';
-
+import CarouselTest from "./Carousel";
 
 const comps = [
-  'buttons','typography','colors'
-]
+  'buttons','typography','colors','carousel'
+];
 
 export default class Test extends Component {
   constructor(props) {
@@ -55,6 +53,7 @@ export default class Test extends Component {
         {(current === 'buttons') ? <ButtonsTest/> : null}
         {(current === 'typography') ? <TypographyTest/> : null}
         {(current === 'colors') ? <ColorsTest/> : null}
+        {(current === 'carousel') ? <CarouselTest/> : null}
       </div>
     )
   }

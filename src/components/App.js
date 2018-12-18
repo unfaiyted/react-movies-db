@@ -9,9 +9,9 @@ import Header from "./Header/Header";
 import MenuBar from "./Header/MenuBar";
 import Logo from "./Header/Logo";
 import UserBar from "./Header/UserBar";
-import Search from "./Header/Search";
 import Footer from "../containers/Footer";
 import Banner from "../containers/Banner";
+import {randomInt} from "../util/helpers";
 
 class App extends Component {
 
@@ -24,7 +24,6 @@ class App extends Component {
     const { lists, movies } = this.props;
     const first = lists[0];
 
-    console.log(movies);
     return (
       <div className="App">
         <LoadingBar/>
@@ -34,7 +33,7 @@ class App extends Component {
           <UserBar/>
         </Header>
 
-        { (first) ? <Banner item={movies[Math.floor((Math.random() * 10) + 1)]}/> : 'Loading data...'}
+        { (first) ? <Banner item={movies[randomInt(1,10)]}/> : 'Loading data...'}
         <div className={'container'}>
           { (first) ? <Carousel list={lists[0]} /> : 'Loading data...'}
           { (first) ? <Carousel list={lists[1]} /> : 'Loading data...'}
