@@ -4,11 +4,11 @@
 
 .carousel-page-container {
   right:0;
-  top: -20px;
+  transform: translateY(-15px) translateX(-60px);
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  position: fixed;
+  position: absolute;
 
   .page-item {
 

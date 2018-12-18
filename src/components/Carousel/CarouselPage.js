@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 // Specific item shown for pages list.
 function CarouselPageItem({page, currentPage}) {
 
-  console.log(page);
-
   const selected = (currentPage === page) ?  'selected': '';
 
   return (
