@@ -1,0 +1,30 @@
+@import "../../css/util/_all.scss";
+// Default Height of Elements
+
+
+.carousel-page-container {
+  right:0;
+  top: -20px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  position: fixed;
+
+  .page-item {
+
+    width: 20px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: $grey;
+    opacity: 0.3;
+    margin-right: 3px;
+
+    &.selected {
+      color: $white;
+      opacity: 0.9;
+    }
+
+  }
+
+
+}

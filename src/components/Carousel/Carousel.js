@@ -7,6 +7,7 @@ import './Carousel.scss';
 import CarouselItem from "./Item";
 import CarouselInfo from "./CarouselInfo";
 import {handleAddMovie} from "../../actions/movies";
+import CarouselPage from "./CarouselPage";
 
 
 class Carousel extends Component {
@@ -92,13 +93,17 @@ class Carousel extends Component {
     const {movies} = this.props;
 
     const { id, name, mediaIds} = this.props.list;
-    const {styles, selectedId, selectedItem, style} = this.state;
+    const {styles, selectedId, selectedItem, page} = this.state;
 
     return (
       <div key={id} className='carousel-container' style={{ height: (selectedId) ? 'calc(17.92vw  + 60vh)' : null }}>
         <h2>{name}</h2>
 
         { (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }
+
+
+
+        <CarouselPage pageCount={5} currentPage={page}/>
 
         <div className='carousel' style={styles}>
         {

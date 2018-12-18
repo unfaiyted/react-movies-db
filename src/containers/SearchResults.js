@@ -14,14 +14,17 @@ class SearchResults extends Component {
     }
   }
 
+  // Hide Body Overflow, removes main scrollbar
   componentWillMount() {
       document.body.style.overflow = 'hidden';
   }
 
+  // Sets normal scrolling functionality
   componentWillUnmount() {
     document.body.style.overflowY = 'auto';
   }
 
+  // Takes search value and returns value
   performSearch = (value) => {
     const { dispatch } = this.props;
     dispatch(handleMovieSearch(value)).then((res) => {
@@ -42,8 +45,6 @@ class SearchResults extends Component {
 
     if (!isTyping && searchComplete === false)
       this.performSearch(searchValue);
-
-    console.log(typeof search.results);
 
     return (
       <div className='search-results'>
@@ -70,7 +71,6 @@ class SearchResults extends Component {
 
 
 function mapStateToProps({search}) {
-  console.log(search);
   return {
     search,
   }
