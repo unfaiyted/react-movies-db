@@ -8,6 +8,7 @@ import CarouselItem from "./Item";
 import CarouselInfo from "./CarouselInfo";
 import {handleAddMovie} from "../../actions/movies";
 import CarouselPage from "./CarouselPage";
+import Icon from "../../media/Icon";
 
 
 class Carousel extends Component {
@@ -36,7 +37,6 @@ class Carousel extends Component {
     }
   }
 
-
   handlePage = (e) => {
 
     const { page, styles } = this.state;
@@ -57,8 +57,7 @@ class Carousel extends Component {
 
   };
 
-  // TODO: Add functionality to copy a page to the END.
-  // TODO: Then...later...delete last page, add left most padding
+  // TODO: Add functionality to copy a page to the END. (fluid loop)
   // TODO: Or margins to keep the "Scroll effect fluid"
 
   handleSelected = (id) => {
@@ -89,21 +88,31 @@ class Carousel extends Component {
 
   };
 
+  calculatePages  = (movies) => {
+      const items = Object.keys(movies).length;
+
+      // TODO: Create Dynamic elements per page, update on resize.
+      const elementsPerPage = 6;
+
+      return Math.ceil(items/elementsPerPage);
+  };
+
   render() {
     const {movies} = this.props;
 
     const { id, name, mediaIds} = this.props.list;
     const {styles, selectedId, selectedItem, page} = this.state;
 
+    const totalPages = this.calculatePages(movies);
+
     return (
       <div key={id} className='carousel-container' style={{ height: (selectedId) ? 'calc(17.92vw  + 60vh)' : null }}>
         <h2>{name}</h2>
 
-        { (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}>&lt;</button> : null }
+        { (this.state.page > 1) ? <button className={'left'} onClick={this.handlePage}><Icon name='angle-left'/></button> : null }
 
-
-
-        <CarouselPage pageCount={5} currentPage={page}/>
+        {/* Displays a indicator of current page and total pages */}
+        <CarouselPage pageCount={totalPages} currentPage={page}/>
 
         <div className='carousel' style={styles}>
         {
@@ -119,8 +128,11 @@ class Carousel extends Component {
         }
         </div>
         {(selectedId) ? <CarouselInfo item={selectedItem} close={this.handleClose}/> : null}
-        <button className={'right'} onClick={this.handlePage}>&gt;</button>
-    </div>)
+
+        { (this.state.page < totalPages) ? <button className={'right'} onClick={this.handlePage}><Icon name='angle-right'/></button> : null }
+
+
+      </div>)
   }
 }
 
