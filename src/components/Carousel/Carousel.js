@@ -118,9 +118,12 @@ class Carousel extends Component {
         {
           Object.keys(movies).map((movie, i) => {
             const item = movies[movie];
+            const isLastOnPage = ((i+1) % 6 === 0);
+
             return (
               <CarouselItem key={i}
                             item={item}
+                            isLastOnPage={isLastOnPage}
                             selected={(selectedId === item.id)}
                             handleSelected={this.handleSelected}/>
             )

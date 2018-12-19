@@ -55,8 +55,16 @@ $time: .45s;
       z-index: -1;
     }
 
+    &.last {
 
-    &:hover, &.selected {
+      &:hover {
+        @include calculated-keys('min-width','calc-hover-width', $zoom);
+        @include calculated-keys('min-height','calc-hover-height', $zoom);
+        transform-origin: right bottom;
+      }
+    }
+
+    &:not(.last):hover, &.selected {
 
       @include calculated-keys('min-width','calc-hover-width', $zoom);
       @include calculated-keys('min-height','calc-hover-height', $zoom);
@@ -67,12 +75,6 @@ $time: .45s;
                   min-height 0.1s,
                   transform 0.2s,
                   ease-in 0.3s;
-
-
-      //&:nth-of-type(5n) {
-      //  transform: translateX(-200px) translateY(-$offsetTrans);
-      //}
-
 
       // BG Shade
       &:before {

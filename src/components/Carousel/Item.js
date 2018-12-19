@@ -52,9 +52,10 @@ export default class Item extends Component {
     };
 
     const selected = (this.state.selected) ?  'selected' : ' ';
+    const position = (this.props.isLastOnPage) ? 'last' : ' ';
 
     return (
-      <div className={['carousel-item', selected].join(' ')} style={styles} ref={this.carouselItem}>
+      <div className={['carousel-item', selected, position].join(' ')} style={styles} ref={this.carouselItem}>
           <div className='text'>
               <span className='rating'>{vote_average} / 10</span>
               <span className='title'>{title}</span>
